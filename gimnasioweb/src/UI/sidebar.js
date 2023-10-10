@@ -17,6 +17,7 @@ const Sidebar = () => {
           <NavLink className="text-xl p-1 text-gray-400 auto  hover:text-white hover:border-b-2 border-purple-900 hover:-translate-y-1 hover:scale-110 duration-300" end to="/training">Registrar Entrenamiento</NavLink>
           <NavLink className="text-xl p-1 text-gray-400 auto  hover:text-white hover:border-b-2 border-purple-900 hover:-translate-y-1 hover:scale-110 duration-300"  end to="/schedules">Ver Horarios para entrenar</NavLink>
 
+
         </nav>
       </div>
     </div>

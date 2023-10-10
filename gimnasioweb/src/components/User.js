@@ -18,7 +18,8 @@ const User = () => {
       id:'',
       userName:'',
       email:'',
-      password:''
+      password:'',
+      state: true
     },
     validationSchema: Yup.object({
       user: Yup.string()
@@ -69,7 +70,7 @@ const User = () => {
           } else {
             // Si no hay duplicados, agrega el usuario a la base de datos
             await firebase.db.collection('users').add(user);
-            navigate('/');
+            //navigate('/');
             window.alert('Usuario registrado');
           }
       } catch (e) {
@@ -179,12 +180,16 @@ const User = () => {
                   ):null}
           
 
-          <div className="text-center">
+          <div className="text-center flex flex-col p-1" >
             <input
-              className="px-4 py-2 bg-violet-800 text-white rounded cursor-pointer  hover:-translate-y-1 hover:scale-90 duration-300"
+              className="px-4 py-2 bg-violet-800 text-white rounded cursor-pointer  hover:-translate-y-1 hover:scale-90 duration-300 mb-2"
               type="submit"
               value="Registrar"
             />
+              <button onClick={()=>{navigate('/UserList')}}               className="px-4 py-2 bg-violet-800 text-white rounded cursor-pointer  hover:-translate-y-1 hover:scale-90 duration-300"
+ >
+                  Lista usuarios
+              </button>
           </div>
 
         </form>
