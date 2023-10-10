@@ -1,0 +1,73 @@
+
+
+#divRigth{
+    background-image: url(../image/fondo.png);
+   
+    background-size:contain; /* Ajusta el tamaño de la imagen para cubrir el div */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-position: center; /* Centra la imagen */
+    margin: 10px;
+    border-radius: 10px;
+    margin-bottom: -10px;
+}
+
+#shadow{
+    font-size: 63px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+#divLeft{
+   
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    flex-direction: row;
+    width: 100%;
+   
+}
+
+#seccion1{
+    width:100%;
+    height: 80vh;
+    padding-left: 70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+#seccion2{
+    width:100%;
+    height: 100vh;
+
+}
+
+
+  @media (max-width: 768px) {
+    #seccion1{
+        padding: 20px;
+    }
+    
+
+   #divRigth{
+   display: none;
+   }
+
+   #divLeft{
+
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+       
+   }
+   #shadow{
+    font-size: 30px;
+   }
+
+ 
+
+  
+  }
+  
