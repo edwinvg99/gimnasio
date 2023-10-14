@@ -28,7 +28,7 @@ const User = () => {
           .matches(/^[a-zA-Z]+$/, 'Solo se permiten letras en este campo')
           .required('El nombre es obligatorio'),
 
-      id:   Yup.number()
+      id:   Yup.string()
           .min(3,'La cedula debe ser de minimo 3 numeros')
           .required('La cedula es obligatoria'),
 
@@ -50,7 +50,8 @@ const User = () => {
     }),
 
     onSubmit: async (user) => {
-      try {  // Verificar si el nombre de usuario ya existe
+      try {
+        // Verificar si el nombre de usuario ya existe
         const userNameQuery = await firebase.db
           .collection('users')
           .where('userName', '==', user.userName)
@@ -62,21 +63,25 @@ const User = () => {
           .where('email', '==', user.email)
           .get();
         
-            
-          if (!userNameQuery.empty) {
-            window.alert('El nombre de usuario ya está en uso.');
-          } else if (!emailQuery.empty) {
-            window.alert('El correo electrónico ya está en uso.');
-          } else {
-            // Si no hay duplicados, agrega el usuario a la base de datos
-            await firebase.db.collection('users').add(user);
-            //navigate('/');
-            window.alert('Usuario registrado');
-          }
+        if (!userNameQuery.empty) {
+          window.alert('El nombre de usuario ya está en uso.');
+        } else if (!emailQuery.empty) {
+          window.alert('El correo electrónico ya está en uso.');
+        } else {
+          // Asegúrate de que el 'id' sea una cadena (string)
+          user.id = user.id.toString();
+          
+    
+          // Si no hay duplicados, agrega el usuario a la base de datos
+          await firebase.db.collection('users').add(user);
+          //navigate('/');
+          window.alert('Usuario registrado');
+        }
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     }
+    
   })
 
 
@@ -84,7 +89,7 @@ const User = () => {
     <div  className="flex justify-center items-center min-h-screen bg-white">
       <div id="userMain" className="w-full max-w-md p-6  rounded-lg shadow-lg ">
 
-        <form  onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
           <h1 className="text-2xl font-bold mb-4 text-center text-violet-800">Registrar Usuario</h1>
 
           <div className="mb-4">
@@ -186,12 +191,10 @@ const User = () => {
               type="submit"
               value="Registrar"
             />
-              <button onClick={()=>{navigate('/UserList')}}               className="px-4 py-2 bg-violet-800 text-white rounded cursor-pointer  hover:-translate-y-1 hover:scale-90 duration-300"
- >
+              <button onClick={()=>{navigate('/UserList')}}               className="px-4 py-2 bg-violet-800 text-white rounded cursor-pointer  hover:-translate-y-1 hover:scale-90 duration-300">
                   Lista usuarios
               </button>
           </div>
-
         </form>
       </div>
     </div>

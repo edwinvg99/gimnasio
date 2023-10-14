@@ -18,7 +18,6 @@
 
 
 #divLeft{
-   
     margin: 10px;
     border-radius: 10px;
     text-align: center;
@@ -28,7 +27,7 @@
    
 }
 
-#seccion1{
+#section1{
     width:100%;
     height: 80vh;
     padding-left: 70px;
@@ -38,7 +37,7 @@
 
 
 
-#seccion2{
+#section2{
     width:100%;
     height: 100vh;
 
@@ -46,7 +45,7 @@
 
 
   @media (max-width: 768px) {
-    #seccion1{
+    #section1{
         padding: 20px;
     }
     
